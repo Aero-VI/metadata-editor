@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Metadata Editor - Privacy-First EXIF Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔒 Image Metadata Editor</h1>
+            <p class="subtitle">View, edit, and strip EXIF data from your photos — 100% client-side, zero server uploads</p>
+        </header>
+
+        <div class="info-box">
+            <h3>🛡️ Privacy First</h3>
+            <p>All processing happens in your browser. Your images never leave your device. No tracking, no uploads, no BS.</p>
+        </div>
+
+        <section class="upload-section">
+            <div class="upload-zone" id="uploadZone">
+                <input type="file" id="fileInput" accept="image/jpeg,image/jpg" hidden>
+                <div class="upload-content">
+                    <span class="upload-icon">📷</span>
+                    <p>Click to upload or drag & drop</p>
+                    <small>JPEG images only (EXIF support)</small>
+                </div>
+            </div>
+        </section>
+
+        <section id="editorSection" class="editor-section hidden">
+            <div class="preview-container">
+                <h2>Image Preview</h2>
+                <img id="imagePreview" alt="Uploaded image">
+            </div>
+
+            <div class="metadata-container">
+                <div class="metadata-header">
+                    <h2>EXIF Metadata</h2>
+                    <div class="button-group">
+                        <button id="stripBtn" class="btn btn-danger">🗑️ Strip All Metadata</button>
+                        <button id="downloadBtn" class="btn btn-primary">💾 Download Image</button>
+                    </div>
+                </div>
+
+                <div class="metadata-grid">
+                    <div class="metadata-field">
+                        <label for="cameraMake">Camera Make</label>
+                        <input type="text" id="cameraMake" placeholder="e.g., Canon">
+                    </div>
+
+                    <div class="metadata-field">
+                        <label for="cameraModel">Camera Model</label>
+                        <input type="text" id="cameraModel" placeholder="e.g., EOS R5">
+                    </div>
+
+                    <div class="metadata-field">
+                        <label for="dateTime">Date & Time</label>
+                        <input type="datetime-local" id="dateTime">
+                    </div>
+
+                    <div class="metadata-field">
+                        <label for="latitude">Latitude</label>
+                        <input type="text" id="latitude" placeholder="e.g., 40.7128">
+                    </div>
+
+                    <div class="metadata-field">
+                        <label for="longitude">Longitude</label>
+                        <input type="text" id="longitude" placeholder="e.g., -74.0060">
+                    </div>
+
+                    <div class="metadata-field">
+                        <label for="copyright">Copyright</label>
+                        <input type="text" id="copyright" placeholder="© Your Name">
+                    </div>
+
+                    <div class="metadata-field">
+                        <label for="artist">Artist/Author</label>
+                        <input type="text" id="artist" placeholder="Photographer name">
+                    </div>
+
+                    <div class="metadata-field">
+                        <label for="software">Software</label>
+                        <input type="text" id="software" placeholder="e.g., Lightroom">
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <h3>📋 All EXIF Data (Read-Only)</h3>
+                    <pre id="rawExif">No EXIF data found or not loaded yet.</pre>
+                </div>
+
+                <button id="applyBtn" class="btn btn-success">✅ Apply Changes</button>
+            </div>
+        </section>
+
+        <section class="education-section">
+            <h2>📚 What is EXIF Metadata?</h2>
+            <div class="education-grid">
+                <div class="edu-card">
+                    <h3>What It Contains</h3>
+                    <p>EXIF (Exchangeable Image File Format) stores camera settings, timestamps, GPS location, and other technical data in your photos.</p>
+                </div>
+                <div class="edu-card">
+                    <h3>Privacy Concerns</h3>
+                    <p>Photos shared online can leak your location, device info, and when/where the photo was taken. Stripping metadata protects your privacy.</p>
+                </div>
+                <div class="edu-card">
+                    <h3>When to Keep It</h3>
+                    <p>Keep metadata for archival purposes, photo organization, or professional portfolios. Remove it before sharing publicly.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Made with 🔥 by <a href="https://github.com/Aero-VI" target="_blank">Aero-VI</a></p>
+            <p><small>Open source • Client-side only • No data collection</small></p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/piexifjs@1.0.6/piexif.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
